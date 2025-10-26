@@ -1,0 +1,53 @@
+#+title:                 Js-Imports-Lexer
+#+author:                Krishna (Anshirk0)
+#+email:                 krishna404@yandex.com
+#+language:              en
+
++ Git repo on Codeberg: <https://codeberg.org/anhsirk0/js-imports-lexer>
+  - Mirrors:
+    + GitHub: <https://github.com/anhsirk0/js-imports-lexer>
+
+* Js-Imports-Lexer
+** About
+Lexer to parse JS/TS/TSX import statements.
+** Installation
+#+BEGIN_SRC shell
+git clone https://codeberg.org/anhsirk0/js-imports-lexer.git --depth=0
+cd js-imports-lexer
+ruby main.rb
+#+END_SRC
+* Usage
+#+BEGIN_SRC ruby
+#!/usr/bin/env ruby
+
+require_relative "lexer.rb"
+
+src = 'import React, { FC , useState } from "react"'
+
+lex = Lexer.new(src)
+lex.parse!
+lex.show
+#+END_SRC
+Output
+#+BEGIN_SRC text
+from: react
+imports: ["default:React", "FC", "useState"]
+span: 0 to 45
+#+END_SRC
+* Notes
+** Semicolon =;= at line end is necessary for this to work
+** Only double quoted ="= from statement is supported as of now
+** Default exports will have a prefix =:def:=
+#+BEGIN_SRC js
+import stuff from "stuff";
+
+// =>
+// imports: [":def:stuff"]
+#+END_SRC
+** renamed exports will be separated by =:as:=
+#+BEGIN_SRC js
+import { Some as Other } from "stuff";
+
+// =>
+// imports: ["Some:as:Other"]
+#+END_SRC
