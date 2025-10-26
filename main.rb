@@ -27,3 +27,7 @@ console.log(123);
 lex = Lexer.new(src)
 lex.parse!
 lex.show
+
+imports = lex.parsed
+# do something with imports array
+puts imports.inspect

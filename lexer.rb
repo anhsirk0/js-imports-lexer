@@ -25,6 +25,7 @@ module Token
 end
 
 class Lexer
+  attr_accessor :parsed
   def initialize(src)
     @src = src
     @content = src.dup
