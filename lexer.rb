@@ -113,7 +113,7 @@ class Lexer
         collect = Collect::None
       elsif char == Token::Comma && symbol.length > 0
         if collect == Collect::DefaultImport
-          symbol = "default:" + symbol
+          symbol = ":def:" + symbol
         end
         imports << symbol
         symbol = ""
