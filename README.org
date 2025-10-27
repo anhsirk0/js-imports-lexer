@@ -12,7 +12,7 @@
 Lexer to parse JS/TS/TSX import statements.
 ** Installation
 #+BEGIN_SRC shell
-git clone https://codeberg.org/anhsirk0/js-imports-lexer.git --depth=0
+git clone https://codeberg.org/anhsirk0/js-imports-lexer.git --depth=1
 cd js-imports-lexer
 ruby main.rb
 #+END_SRC
